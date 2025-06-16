@@ -1,0 +1,28 @@
+#include <Servo.h>
+
+// declaração de variáveis
+int pot = A0;
+Servo servo;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(pot, INPUT);
+  servo.attach(9); // ligar servo no pino ~9 (pwm)
+}
+
+void loop()
+{
+  int rotacao = analogRead(pot);
+  int angulo = servo.read();
+  rotacao = map(rotacao, 0, 1023, 0, 180); // mapear valor do potenciometro
+  servo.write(rotacao);					   // para ir de 0 - 180
+  
+  Serial.println("Pot: ");
+  Serial.println(rotacao);
+  Serial.println("Servo: ");
+  Serial.println(angulo);
+  Serial.println("----------------------");
+  
+  delay(500);
+}
