@@ -15,8 +15,8 @@ void loop()
 {
   int rotacao = analogRead(pot);
   int angulo = servo.read();
-  rotacao = map(rotacao, 0, 1023, 0, 180); // mapear valor do potenciometro
-  servo.write(rotacao);					   // para ir de 0 - 180
+  rotacao = map(rotacao, 0, 1023, 0, 180); // mapear valor do potenciometro para ir de 0 - 180
+  servo.write(rotacao);
   
   Serial.println("Pot: ");
   Serial.println(rotacao);
